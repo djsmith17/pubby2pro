@@ -25,7 +25,10 @@ with col1:
 with col2:
     st.subheader(f'{current_date}')
 
-season_id = '2024-25'
+col1, col2, col3 = st.columns([1, 1, 1])
+with col1:
+    season_id = st.selectbox('Select Season', options = ['2024-25'])
+
 season_file_name = f'{data_dir}/nba_advanced_stats_{season_id}.csv'
 
 if not os.path.exists(season_file_name):
@@ -36,6 +39,11 @@ if not os.path.exists(season_file_name):
 else:
     advance_stats_df = pd.read_csv(season_file_name)
 
-
-st.write(f'There are {advance_stats_df.shape[0]} active players in the following table')
+with col3:
+    st.write(' ')
+    st.write(' ')
+    st.write(' ')
+    st.write(f'There are {advance_stats_df.shape[0]} active players in the following table')
 st.dataframe(advance_stats_df)
+
+st.subheader('Game History')
