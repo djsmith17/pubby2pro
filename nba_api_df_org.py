@@ -29,7 +29,7 @@ def compile_adv_stats(season_id, players_df):
     advanced_stats_df = pd.DataFrame()
     for row, player in players_df.iterrows():
 
-        time.sleep(0.5)
+        time.sleep(1.0)
         player_id = player['id']
         career_resp = playercareerstats.PlayerCareerStats(player_id = player_id)
         career_df = pd.DataFrame(career_resp.get_data_frames()[0])
