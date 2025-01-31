@@ -36,13 +36,16 @@ with col1:
 with col2:
     st.write(' ')
     with st.expander('Data Configuration'):
-        st.button('Redownload Data')
+        redownload_true = st.button('Redownload Data')
 
 season_file_name = f'{data_dir}/nba_advanced_stats_{season_id}.csv'
 
+if redownload_true:
+    advance_stats_df = download_nba_data(season_id)
+    advance_stats_df.to_csv(season_file_name, index=False)
+
 if not os.path.exists(season_file_name):
     advance_stats_df = download_nba_data(season_id)
-
     advance_stats_df.to_csv(season_file_name, index=False)
 else:
     advance_stats_df = pd.read_csv(season_file_name)
