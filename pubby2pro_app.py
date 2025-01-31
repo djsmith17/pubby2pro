@@ -5,6 +5,10 @@ from datetime import datetime
 
 from nba_api_df_org import get_nba_advanced_stats
 
+def download_nba_data(season_id):
+    with st.spinner(text = 'Downloading latest data from nba.com'):
+        return get_nba_advanced_stats(season_id)
+
 data_dir = 'data'
 current_date = datetime.now().strftime('%b %d, %Y')
 
@@ -37,8 +41,7 @@ with col2:
 season_file_name = f'{data_dir}/nba_advanced_stats_{season_id}.csv'
 
 if not os.path.exists(season_file_name):
-    with st.spinner(text = 'Downloading latest data from nba.com'):
-        advance_stats_df = get_nba_advanced_stats(season_id)
+    advance_stats_df = download_nba_data(season_id)
 
     advance_stats_df.to_csv(season_file_name, index=False)
 else:
