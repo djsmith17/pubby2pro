@@ -29,6 +29,11 @@ col1, col2, col3 = st.columns([1, 1, 1])
 with col1:
     season_id = st.selectbox('Select Season', options = ['2024-25'])
 
+with col2:
+    st.write(' ')
+    with st.expander('Data Configuration'):
+        st.button('Redownload Data')
+
 season_file_name = f'{data_dir}/nba_advanced_stats_{season_id}.csv'
 
 if not os.path.exists(season_file_name):
@@ -38,7 +43,7 @@ if not os.path.exists(season_file_name):
     advance_stats_df.to_csv(season_file_name, index=False)
 else:
     advance_stats_df = pd.read_csv(season_file_name)
-    
+
 # Get the last modified date of the file
 file_mod_time = os.path.getmtime(season_file_name)
 file_mod_date = datetime.fromtimestamp(file_mod_time).strftime('%b %d, %Y %I:%M %p')
