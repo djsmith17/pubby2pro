@@ -65,6 +65,15 @@ st.markdown(
     f"<div style='text-align: right; color: grey; font-style: italic;'>This dataset was downloaded on {file_mod_date}</div>",
     unsafe_allow_html=True
 )
-st.dataframe(advance_stats_df)
+
+# Add a multiselect widget to select columns to display
+selected_columns = st.multiselect(
+    'Select columns to display',
+    options=advance_stats_df.columns.tolist(),
+    default=advance_stats_df.columns.tolist()
+)
+
+# Display the dataframe with selected columns
+st.dataframe(advance_stats_df[selected_columns])
 
 st.subheader('Game History')
