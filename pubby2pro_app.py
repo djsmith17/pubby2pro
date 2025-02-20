@@ -14,7 +14,7 @@ def download_nba_data(season_id):
     '''
     Use API calls to download NBA data
     '''
-    with st.spinner(text = 'Downloading latest data from nba.com'):
+    with st.spinner(text = 'Downloading latest data from nba.com', show_time=True):
         return get_nba_advanced_stats(season_id)
 
 def access_nba_csv(season_id, redownload_true):
