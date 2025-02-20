@@ -2,3 +2,4 @@
 *.pyc
 *.csv
 *.ipynb
+.streamlit/secrets.toml
