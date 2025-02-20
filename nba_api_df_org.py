@@ -1,7 +1,11 @@
+'''
+Set of functions to download NBA data using
+the nba_api
+'''
+
+import time
 import warnings
 import pandas as pd
-import nba_api
-import time
 
 from nba_api.stats.endpoints import playercareerstats
 from nba_api.stats.static import players, teams
@@ -23,7 +27,7 @@ def get_nba_advanced_stats(season_id):
 
 def compile_adv_stats(season_id, players_df):
     '''
-    api calls to load data
+    api calls to compile data from playercareerstats endpoint
     '''
 
     advanced_stats_df = pd.DataFrame()
